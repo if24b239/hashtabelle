@@ -2,7 +2,7 @@
 #include <iostream>
 #include <functional>
 
-#define HASH_SIZE 240
+#define HASH_SIZE 5
 
 // helper functions
 
@@ -16,20 +16,27 @@ int HashTable::get_hash_index(std::string token) {
 }
 
 void HashTable::delete_from_map(std::string token) {
-    
-    
+
+    auto share = search_map(token);
+
+    if (share.second == nullptr) {
+        std::cout << "\nIS NOT IN HASHTABLE\n";
+        return;
+    }
+
+    data.erase(share.first);
 }
 
-Share* HashTable::search_map(std::string token) {
+std::pair<int, Share*> HashTable::search_map(std::string token) {
 
     int index = get_hash_index(token);
 
     if (!check_is_right_location(index, 1, token)) {
         std::cout << "\nERROR: Share not found\n";
-        return nullptr;
+        return std::pair<int, Share*>(-1, nullptr);
     }
     
-    return &data.at(index);
+    return std::pair<int, Share*>(index, &data.at(index));
 }
 
 bool HashTable::check_is_right_location(int &index, int step, std::string token) {
@@ -68,10 +75,8 @@ bool HashTable::check_hashconflict(int& index, int step) {
 }
 
 void HashTable::hash_step(int& index, int step) {
-    /*index += 2 * step;
+    index += 3 * step;
     index += step * step;
-    */
-    index += 1;
     index %= HASH_SIZE;
 }
 
