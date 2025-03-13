@@ -1,7 +1,7 @@
 #include <hashtab.h>
 #include <iostream>
 #include <functional>
-#include <nlohmann/json.hpp>
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 
@@ -88,4 +88,12 @@ void HashTable::print_map() {
     for (auto e : data) {
         std::cout << e.first << ": " << e.second.getToken() << std::endl;
     }
+}
+
+Share* HashTable::get_share_from_map(std::string token) {
+    // Use the existing search_map function
+    auto result = search_map(token);
+
+    // Return the Share pointer (will be nullptr if not found)
+    return result.second;
 }
