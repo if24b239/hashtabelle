@@ -16,6 +16,7 @@ void save_to_file(std::string filename, const HashTable& hT) {
     if (file.is_open()) {
         file << j.dump(4);
         file.close();
+        return;
     }
     std::cout << "\nCOULDN'T OPEN FILE\n";
 }
@@ -27,9 +28,11 @@ void load_from_file(std::string filename, HashTable& hT) {
 
     if (file.is_open()) {
         file >> j;
-
         j.get_to(hT);
+        file.close();
+        return;
     }
+    std::cout << "\nCOULDN'T OPEN FILE\n";
 }
 
 int main() {
@@ -56,7 +59,7 @@ int main() {
     HashTable* data2 = new HashTable();
 
     load_from_file("./hashtable_files/first.json", *data2);
-
+    data2->print_map();
 
     // Example: Find a share by token
     std::string search_token = "AAPL";
@@ -75,12 +78,7 @@ int main() {
 
     } else {
         std::cout << "\nShare with token " << search_token << " not found" << std::endl;
-    }
-    Share* found_share2 = data->get_share_from_map(search_token);
-    found_share2->print_share_data();
-
-
-    
+    }  
 
     // Clean up
     delete data;

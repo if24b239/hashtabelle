@@ -3,8 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "nlohmann/json.hpp"
-using json = nlohmann::json;
 
 using json = nlohmann::json;
 
@@ -116,12 +114,6 @@ void Share::print_share_data() {
                   << ", Volume: " << day.volume << std::endl;
         count++;
     }
-}
-
-void from_json(const json& j, Share& share) {
-    j.at("name").get_to(share.name);
-    j.at("wkn").get_to(share.wkn);
-    j.at("token").get_to(share.token);
 }
 
 void Share::plot_schlusskurse(int tage) {
