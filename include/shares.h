@@ -18,6 +18,7 @@ struct Day {
 };
 
 class Share {
+public:  
     std::string name;
     std::string token;
     std::string wkn;
@@ -25,11 +26,10 @@ class Share {
     // Vector to store the history of days
     std::vector<Day> history;
 
-public:
     /// @brief Constructor for a Share
-    /// @param name Company name
-    /// @param token Stock ticker symbol
-    /// @param wkn German securities identification code
+    /// @param name 
+    /// @param token 
+    /// @param wkn 
     Share(std::string name, std::string token, std::string wkn) :
         name(name), token(token), wkn(wkn) {};
 

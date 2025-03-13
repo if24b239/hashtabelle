@@ -94,6 +94,7 @@ bool Share::import_history(const std::string& filename) {
     std::cout << "Successfully imported " << history.size() << " days of history for " << name << std::endl;
     return true;
 }
+
 void Share::print_share_data() {
     std::cout << "Share: " << name << " (" << token << ")" << std::endl;
     std::cout << "WKN: " << wkn << std::endl;
@@ -113,6 +114,32 @@ void Share::print_share_data() {
                   << ", Volume: " << day.volume << std::endl;
         count++;
     }
+}
+
+/**
+ * 
+ * DAY JSON CONVERSION
+ * 
+ */
+void to_json(json& j, const Day& day) {
+    j = json{
+        {"date", day.date},
+        {"close", day.close},
+        {"volume", day.volume},
+        {"open", day.open},
+        {"high", day.high},
+        {"low", day.low}
+    };
+}
+
+void from_json(const json& j, Day& day) {
+    j.at("date").get_to(day.date);
+    j.at("close").get_to(day.close);
+    j.at("volume").get_to(day.volume);
+    j.at("open").get_to(day.open);
+    j.at("high").get_to(day.high);
+    j.at("low").get_to(day.low);
+}
 
 /**
 *
@@ -124,7 +151,7 @@ void to_json(json& j, const Share& share) {
         {"name", share.name},
         {"wkn", share.wkn},
         {"token", share.token},
-        {"history", *(share.history)}
+        {"history", share.history}
     };
 }
 
