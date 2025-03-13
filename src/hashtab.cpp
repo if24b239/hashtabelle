@@ -5,9 +5,7 @@
 
 using json = nlohmann::json;
 
-#define HASH_SIZE 5
-
-// helper functions
+#define HASH_SIZE 1000              
 
 int HashTable::get_hash_index(std::string token) {
     unsigned long hash = 0;
@@ -45,7 +43,7 @@ std::pair<int, Share*> HashTable::search_map(std::string token) {
 bool HashTable::check_is_right_location(int &index, int step, std::string token) {
 
     if (data.find(index) != data.end() && data.at(index).getToken() == token) return true;
-    if (step == 10) return false;
+    if (step == 200) return false;
 
     hash_step(index, step);
 
@@ -73,8 +71,8 @@ bool HashTable::check_hashconflict(int& index, int step) {
 
     hash_step(index, step);
 
-    check_hashconflict(index, ++step);
-    return true;
+    
+    return check_hashconflict(index, ++step);
 }
 
 void HashTable::hash_step(int& index, int step) {
