@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "nlohmann/json.hpp"
+using json = nlohmann::json;
 
 // Helper function to convert string with dollar sign to double
 double string_to_double(const std::string& str) {
@@ -111,3 +113,93 @@ void Share::print_share_data() {
         count++;
     }
 }
+
+void from_json(const json& j, Share& share) {
+    j.at("name").get_to(share.name);
+    j.at("wkn").get_to(share.wkn);
+    j.at("token").get_to(share.token);
+}
+
+void Share::plot_schlusskurse(int tage) {
+    // Prüfen, ob Kursdaten vorhanden sind
+    if (history.empty()) {
+        std::cout << "Keine Daten für " << name << " verfügbar!" << std::endl;
+        return;
+    }
+
+    // Anzahl der verfügbaren Tage begrenzen
+    int verfuegbare_tage = history.size();
+    int anzeige_tage = (tage < verfuegbare_tage) ? tage : verfuegbare_tage;
+
+    // Die letzten X Tage auswählen
+    std::cout << "\nSchlusskurse (" << token << ") - letzte " << anzeige_tage << " Tage:\n";
+
+    // Höchsten und niedrigsten Kurs finden
+    double max_kurs = 0;
+    double min_kurs = 999999;
+    for (int i = verfuegbare_tage - anzeige_tage; i < verfuegbare_tage; i++) {
+        double kurs = history[i].close;
+        if (kurs > max_kurs) max_kurs = kurs;
+        if (kurs < min_kurs) min_kurs = kurs;
+    }
+
+    // Höhe des Diagramms
+    const int hoehe = 10;
+
+    // Diagramm-Matrix erstellen (Höhe x Breite)
+    char diagramm[hoehe][anzeige_tage];
+
+    // Diagramm mit Leerzeichen initialisieren
+    for (int y = 0; y < hoehe; y++) {
+        for (int x = 0; x < anzeige_tage; x++) {
+            diagramm[y][x] = ' ';
+        }
+    }
+
+    // Kurspunkte in die Matrix eintragen
+    for (int tag = 0; tag < anzeige_tage; tag++) {
+        // Tatsächlicher Index in der Historie
+        int idx = verfuegbare_tage - anzeige_tage + tag;
+        double kurs = history[idx].close;
+        // Kurswert normalisieren (0 bis hoehe-1)
+        int y_pos = hoehe - 1 - (int)((kurs - min_kurs) / (max_kurs - min_kurs) * (hoehe - 1));
+        if (y_pos < 0) y_pos = 0;
+        if (y_pos >= hoehe) y_pos = hoehe - 1;
+        diagramm[y_pos][tag] = '*';
+    }
+
+    // Diagramm ausgeben mit extra Spacing zwischen den Spalten
+    for (int y = 0; y < hoehe; y++) {
+        if (y % 2 == 0) {
+            double kurs_wert = max_kurs - y * (max_kurs - min_kurs) / (hoehe - 1);
+            printf("%6.2f |", kurs_wert);
+        } else {
+            printf("       |");
+        }
+        for (int x = 0; x < anzeige_tage; x++) {
+            // Hier wird ein zusätzlicher Leerraum hinzugefügt
+            std::cout << diagramm[y][x] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // X-Achse anpassen (hier werden zwei '-' pro Tag gedruckt)
+    std::cout << "       +";
+    for (int i = 0; i < anzeige_tage; i++) {
+        std::cout << "--";
+    }
+    std::cout << std::endl;
+
+    // Datum alle 5 Tage ausgeben, ebenfalls mit zusätzlichem Leerraum
+    std::cout << "        ";
+    for (int i = 0; i < anzeige_tage; i += 4) {
+        if (i < anzeige_tage) {
+            std::string datum = history[verfuegbare_tage - anzeige_tage + i].date;
+            std::cout << datum.substr(0, 5);
+            // Zusätzliche Leerzeichen für die Ausrichtung, hier 2 Leerzeichen
+            std::cout << "  ";
+        }
+    }
+    std::cout << std::endl;
+}
+

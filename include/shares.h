@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <nlohmann/json.hpp>
 
 // A simple struct to store daily stock data
 struct Day {
@@ -39,12 +40,18 @@ public:
     // Get the name
     std::string getName() { return name; }
 
-    // Get the history
-    std::vector<Day>& getHistory() { return history; }
-
     // Import history from a CSV file
     bool import_history(const std::string& filename);
 
     // Print the share data (for debugging)
     void print_share_data();
+
+    // Plot die Schlusskurse der letzten Tage als einfache ASCII-Grafik
+    void plot_schlusskurse(int tage = 30);
+    friend void from_json(const nlohmann::json& j, Share& share);
+    friend void to_json(nlohmann::json& j, const Share& share);
 };
+
+// Deklariere die Funktionen außerhalb der Klasse
+void from_json(const nlohmann::json& j, Share& share);
+void to_json(nlohmann::json& j, const Share& share);

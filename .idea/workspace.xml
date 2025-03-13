@@ -28,18 +28,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a804fc35-21ae-4368-9140-eb9be2f6dab0" name="Changes" comment="get_hash_indext">
-      <change afterPath="$PROJECT_DIR$/HistoricalData_1741869447634.csv" afterDir="false" />
+    <list default="true" id="a804fc35-21ae-4368-9140-eb9be2f6dab0" name="Changes" comment="import history">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-de20d54d73da3c811580.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-7e06e8580ca0028ffc50.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2025-03-12T10-31-07-0802.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-hashtabelle-Debug-114089cb00e9cb3f5e6a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hashtabelle.dir/src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hashtabelle.dir/src/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/hashtabelle.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hashtabelle.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/shares.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/shares.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hashtab.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/hashtab.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shares.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/shares.cpp" afterDir="false" />
     </list>
@@ -69,6 +65,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/daniel/Desktop/algo/hashtabelle/include/shares.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -137,7 +134,7 @@
       <workItem from="1741775029451" duration="400000" />
       <workItem from="1741775443970" duration="4252000" />
       <workItem from="1741852554224" duration="24000" />
-      <workItem from="1741866735223" duration="3488000" />
+      <workItem from="1741866735223" duration="11354000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -163,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741776928942</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="import history">
+      <option name="closed" value="true" />
+      <created>1741870577224</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741870577224</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +194,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="clion" />
     <MESSAGE value="get_hash_indext" />
-    <option name="LAST_COMMIT_MESSAGE" value="get_hash_indext" />
+    <MESSAGE value="import history" />
+    <option name="LAST_COMMIT_MESSAGE" value="import history" />
   </component>
 </project>

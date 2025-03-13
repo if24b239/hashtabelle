@@ -34,9 +34,15 @@ int main() {
 
         // Print share data including sample of history
         found_share->print_share_data();
+
+        found_share->plot_schlusskurse();  // Standard: 30 Tage
+        // ODER
     } else {
         std::cout << "\nShare with token " << search_token << " not found" << std::endl;
     }
+    Share* found_share2 = data->get_share_from_map(search_token);
+    found_share2->print_share_data();
+
 
     // Clean up
     delete data;
