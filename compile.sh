@@ -1,5 +1,7 @@
 #! /usr/bin/bash
 
+git submodules update
+
 _source_files=$(find src/ -type f -name "*.cpp")
 echo $_source_files
-g++ -Wall -g -fsanitize=address -Iinclude $_source_files -o outFile
+g++ -Wall -g -fsanitize=address -Iinclude -Ijson/include $_source_files -o outFile

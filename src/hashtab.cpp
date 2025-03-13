@@ -1,6 +1,9 @@
 #include <hashtab.h>
 #include <iostream>
 #include <functional>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 #define HASH_SIZE 5
 
