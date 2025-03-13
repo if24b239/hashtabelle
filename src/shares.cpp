@@ -1,8 +1,11 @@
 #include <shares.h>
+#include <nlohmann/json.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include "nlohmann/json.hpp"
+using json = nlohmann::json;
+
 using json = nlohmann::json;
 
 // Helper function to convert string with dollar sign to double
@@ -93,6 +96,7 @@ bool Share::import_history(const std::string& filename) {
     std::cout << "Successfully imported " << history.size() << " days of history for " << name << std::endl;
     return true;
 }
+
 void Share::print_share_data() {
     std::cout << "Share: " << name << " (" << token << ")" << std::endl;
     std::cout << "WKN: " << wkn << std::endl;

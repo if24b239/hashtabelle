@@ -14,23 +14,24 @@ struct Day {
     double low;
 
     // Simple constructor
+    Day() {};
     Day(std::string d, double c, int v, double o, double h, double l) :
         date(d), close(c), volume(v), open(o), high(h), low(l) {}
 };
 
 class Share {
+public:  
     std::string name;
     std::string token;
     std::string wkn;
 
     // Vector to store the history of days
     std::vector<Day> history;
-
-public:
+    Share() {};
     /// @brief Constructor for a Share
-    /// @param name Company name
-    /// @param token Stock ticker symbol
-    /// @param wkn German securities identification code
+    /// @param name 
+    /// @param token 
+    /// @param wkn 
     Share(std::string name, std::string token, std::string wkn) :
         name(name), token(token), wkn(wkn) {};
 
