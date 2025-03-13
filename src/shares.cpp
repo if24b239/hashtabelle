@@ -1,7 +1,10 @@
 #include <shares.h>
+#include <nlohmann/json.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+using json = nlohmann::json;
 
 // Helper function to convert string with dollar sign to double
 double string_to_double(const std::string& str) {
@@ -110,4 +113,23 @@ void Share::print_share_data() {
                   << ", Volume: " << day.volume << std::endl;
         count++;
     }
+
+/**
+*
+* SHARE JSON CONVERSION
+*
+*/
+void to_json(json& j, const Share& share) {
+    j = json{
+        {"name", share.name},
+        {"wkn", share.wkn},
+        {"token", share.token},
+        {"history", *(share.history)}
+    };
+}
+
+void from_json(const json& j, Share& share) {
+    j.at("name").get_to(share.name);
+    j.at("wkn").get_to(share.wkn);
+    j.at("token").get_to(share.token);
 }
