@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-git submodules update
+git submodule update --init --recursive
 
 _source_files=$(find src/ -type f -name "*.cpp")
 echo $_source_files

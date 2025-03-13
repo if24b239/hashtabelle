@@ -1,0 +1,20 @@
+[
+    {
+        "history": [],
+        "name": "Tesla Inc.",
+        "token": "TSLA",
+        "wkn": "A1CX3T"
+    },
+    {
+        "history": [],
+        "name": "Amazon.com",
+        "token": "AMZN",
+        "wkn": "906866"
+    },
+    {
+        "history": [],
+        "name": "Apple Inc.",
+        "token": "AAPL",
+        "wkn": "865985"
+    }
+]

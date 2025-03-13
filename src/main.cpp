@@ -1,8 +1,36 @@
 #include <hashtab.h>
 #include <iostream>
 #include <shares.h>
+#include <to_json.h>
+#include <ostream>
+#include <fstream>
+/*STUPID IDE COMMENT
 #include "hashtab.cpp"
-#include "shares.cpp"
+#include "shares.cpp"*/
+
+void save_to_file(std::string filename, const HashTable& hT) {
+    json j = json(hT);
+
+    std::ofstream file(filename);
+
+    if (file.is_open()) {
+        file << j.dump(4);
+        file.close();
+    }
+    std::cout << "\nCOULDN'T OPEN FILE\n";
+}
+
+void load_from_file(std::string filename, HashTable& hT) {
+    json j;
+
+    std::ifstream file(filename);
+
+    if (file.is_open()) {
+        file >> j;
+
+        j.get_to(hT);
+    }
+}
 
 int main() {
     // Create a hash table
@@ -22,9 +50,17 @@ int main() {
     std::cout << "Hash table contents:" << std::endl;
     data->print_map();
 
+    // save info to a file
+    save_to_file("./hashtable_files/first.json", *data);
+
+    HashTable* data2 = new HashTable();
+
+    load_from_file("./hashtable_files/first.json", *data2);
+
+
     // Example: Find a share by token
     std::string search_token = "AAPL";
-    Share* found_share = data->get_share_from_map(search_token);
+    Share* found_share = data2->get_share_from_map(search_token);
 
     if (found_share != nullptr) {
         std::cout << "\nFound share: " << found_share->getName() << std::endl;
@@ -38,7 +74,10 @@ int main() {
         std::cout << "\nShare with token " << search_token << " not found" << std::endl;
     }
 
+    
+
     // Clean up
     delete data;
+    delete data2;
     return 0;
 }

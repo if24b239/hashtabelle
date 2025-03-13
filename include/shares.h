@@ -13,6 +13,7 @@ struct Day {
     double low;
 
     // Simple constructor
+    Day() {};
     Day(std::string d, double c, int v, double o, double h, double l) :
         date(d), close(c), volume(v), open(o), high(h), low(l) {}
 };
@@ -25,7 +26,7 @@ public:
 
     // Vector to store the history of days
     std::vector<Day> history;
-
+    Share() {};
     /// @brief Constructor for a Share
     /// @param name 
     /// @param token 

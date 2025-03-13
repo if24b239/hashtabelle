@@ -20,6 +20,7 @@ class HashTable {
     void save_in_map(Share share);
     void delete_from_map(std::string token);
     Share* get_share_from_map(std::string token);
+    inline const std::unordered_map<int, Share>& getData() const { return data; }
 
     //debug function
     void print_map();
