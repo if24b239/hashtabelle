@@ -18,7 +18,7 @@ void save_to_file(std::string filename, const HashTable& hT) {
         file.close();
         return;
     }
-    std::cout << "\nCOULDN'T OPEN FILE\n";
+    std::cout << "\nCOuLdN't OpEN FilE\n";
 }
 
 void load_from_file(std::string filename, HashTable& hT) {
@@ -32,7 +32,7 @@ void load_from_file(std::string filename, HashTable& hT) {
         file.close();
         return;
     }
-    std::cout << "\nCOULDN'T OPEN FILE\n";
+    std::cout << "\nCOuLdN't OpEN FilE\n";
 }
 
 int main() {
