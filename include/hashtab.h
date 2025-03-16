@@ -21,6 +21,7 @@ class HashTable {
     void delete_from_map(std::string token);
     Share* get_share_from_map(std::string token);
     inline const std::unordered_map<int, Share>& getData() const { return data; }
+    void clearData() { data.clear(); }
 
     //debug function
     void print_map();
